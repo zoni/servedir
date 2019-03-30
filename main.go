@@ -1,18 +1,19 @@
 package main
 
 import (
-	"github.com/gorilla/handlers"
-	"gopkg.in/alecthomas/kingpin.v2"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/gorilla/handlers"
+	"gopkg.in/alecthomas/kingpin.v2"
 )
 
-const VERSION = "1.0.0"
+const VERSION = "1.1.0"
 
 var (
 	app      = kingpin.New("servedir", "Serve a directory over HTTP(S)")
-	addr     = app.Flag("addr", "Address to listen on").Short('a').Default(":8080").String()
+	addr     = app.Flag("addr", "Address to listen on").Short('a').Default("127.0.0.1:8080").String()
 	dir      = app.Flag("dir", "Directory to serve").Short('d').Default(".").String()
 	certFile = app.Flag("cert", "TLS certificate to use (optional)").String()
 	keyFile  = app.Flag("key", "TLS certificate private key to use when using --cert").String()
